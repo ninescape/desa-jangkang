@@ -1285,17 +1285,89 @@
     }
 
     @media (max-width: 768px) {
-      .hero-content { grid-template-columns: 1fr; }
+      /* ===== PORTRAIT: kurangi jarak scroll ===== */
+      .section { padding: 3rem 1.2rem; }
+      footer { padding: 3rem 1.2rem; }
+      nav, nav.scrolled { padding-left: 1.2rem; padding-right: 1.2rem; }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        padding: 5.5rem 1.5rem 2.5rem;
+        gap: 1.5rem;
+      }
       .hero-cards { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
+      .hero-desc { margin-bottom: 1.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .img-main { height: 260px; }
       .img-badge { display: none; }
-      .potensi-grid { grid-template-columns: 1fr 1fr; }
+
+      /* ===== POTENSI: kartu horizontal (kesamping) ===== */
+      .potensi-hdr {
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 1.6rem;
+      }
+      .potensi-hdr .section-desc {
+        max-width: 100% !important;
+        font-size: 0.9rem;
+      }
+      .potensi-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .pot-card {
+        display: flex;
+        flex-direction: row;
+        border-radius: 16px;
+      }
+      .pot-img {
+        width: 88px;
+        height: auto;
+        min-height: 90px;
+        flex-shrink: 0;
+        font-size: 2rem;
+        border-radius: 0;
+      }
+      .pot-body {
+        flex: 1;
+        border-top: 1px solid var(--border);
+        border-left: none;
+        border-radius: 0;
+        padding: 0.85rem 1rem;
+      }
+      .pot-title { font-size: 1rem; margin-bottom: 0.2rem; }
+      .pot-desc { font-size: 0.8rem; line-height: 1.55; }
+
+      /* ===== MISI & KKN: 2 kolom agar hemat ruang ===== */
+      .misi-grid { grid-template-columns: repeat(2, 1fr); }
+      .kkn-grid  { grid-template-columns: repeat(2, 1fr); }
+      .kkn-card  { padding: 1.4rem; }
+      .misi-card { padding: 1.2rem; }
+
+      /* ===== KONTAK ===== */
       .kontak-grid { grid-template-columns: 1fr; }
+      .kontak-map  { height: 220px; }
+
+      /* ===== GALERI ===== */
       .nav-links { display: none; }
       .galeri-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-      .gal-item:first-child { grid-column: span 2; min-height: 220px; }
-      .kkn-grid { grid-template-columns: 1fr; }
+      .gal-item:first-child { grid-column: span 2; min-height: 200px; }
+      .galeri-hdr { margin-bottom: 1.5rem; }
+
+      /* ===== FOOTER ===== */
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .section { padding: 2.5rem 1rem; }
+      footer { padding: 2.5rem 1rem; }
+      .hero-content { padding: 5rem 1rem 2rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+      .kkn-grid  { grid-template-columns: 1fr; }
       .misi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>

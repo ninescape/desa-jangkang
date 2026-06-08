@@ -128,10 +128,10 @@
       color: var(--text-mid);
     }
 
-    /* KKN pakai foto background — teks tetap putih di dark mode */
+    /* KKN pakai foto — teks tetap putih di dark mode */
     [data-theme="dark"] .kkn .section-title,
-    [data-theme="dark"] .kkn .kkn-title { color: #ffffff; }
-    [data-theme="dark"] .kkn .kkn-desc  { color: rgba(255,255,255,0.78); }
+    [data-theme="dark"] .kkn .kkn-title  { color: #ffffff; }
+    [data-theme="dark"] .kkn .kkn-desc   { color: rgba(255,255,255,0.78); }
     [data-theme="dark"] .kkn .section-desc { color: rgba(255,255,255,0.75); }
     [data-theme="dark"] .kkn::before {
       background: linear-gradient(
@@ -1023,7 +1023,7 @@
     .gal-item:hover .gal-caption { opacity: 1; }
 
     /* ======= PROGRAM KKN ======= */
-    /* ======= KKN — FOTO SEBAGAI BACKGROUND ======= */
+    /* ======= KKN — FOTO BACKGROUND (desktop) ======= */
     .kkn {
       background-color: var(--navy-deep);
       background-image: url('images/tim-kkn.jpeg');
@@ -1034,7 +1034,7 @@
       overflow: hidden;
     }
 
-    /* Overlay gelap agar teks tetap terbaca */
+    /* Overlay gelap agar teks terbaca */
     .kkn::before {
       content: '';
       position: absolute;
@@ -1054,6 +1054,11 @@
     .kkn .section-title { color: #ffffff; }
     .kkn .tag           { color: var(--gold-light); }
     .kkn .section-desc  { color: rgba(255,255,255,0.75); }
+
+    /* Foto tim — disembunyikan di desktop, muncul di portrait */
+    .kkn-hero-img {
+      display: none;
+    }
 
     .kkn-grid {
       display: grid;
@@ -1333,16 +1338,11 @@
       .misi-grid { grid-template-columns: repeat(2, 1fr); }
       .kkn-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-
-      /* Tablet: matikan parallax fixed agar foto tidak terpotong */
-      .kkn {
-        background-attachment: scroll;
-        background-position: center top;
-      }
+      /* Tablet: matikan parallax */
+      .kkn { background-attachment: scroll; }
     }
 
     @media (max-width: 768px) {
-      /* ===== PORTRAIT: kurangi jarak scroll ===== */
       .section { padding: 3rem 1.2rem; }
       footer { padding: 3rem 1.2rem; }
       nav, nav.scrolled { padding-left: 1.2rem; padding-right: 1.2rem; }
@@ -1359,67 +1359,69 @@
       .img-main { height: 260px; }
       .img-badge { display: none; }
 
-      /* ===== POTENSI: kartu horizontal (kesamping) ===== */
       .potensi-hdr {
         flex-direction: column;
         gap: 0.6rem;
         margin-bottom: 1.6rem;
       }
-      .potensi-hdr .section-desc {
-        max-width: 100% !important;
-        font-size: 0.9rem;
-      }
-      .potensi-grid {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-      }
-      .pot-card {
-        display: flex;
-        flex-direction: row;
-        border-radius: 16px;
-      }
+      .potensi-hdr .section-desc { max-width: 100% !important; font-size: 0.9rem; }
+      .potensi-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      .pot-card { display: flex; flex-direction: row; border-radius: 16px; }
       .pot-img {
-        width: 88px;
-        height: auto;
-        min-height: 90px;
-        flex-shrink: 0;
-        font-size: 2rem;
-        border-radius: 0;
+        width: 88px; height: auto; min-height: 90px;
+        flex-shrink: 0; font-size: 2rem; border-radius: 0;
       }
       .pot-body {
-        flex: 1;
-        border-top: 1px solid var(--border);
-        border-left: none;
-        border-radius: 0;
-        padding: 0.85rem 1rem;
+        flex: 1; border-top: 1px solid var(--border);
+        border-left: none; border-radius: 0; padding: 0.85rem 1rem;
       }
       .pot-title { font-size: 1rem; margin-bottom: 0.2rem; }
       .pot-desc { font-size: 0.8rem; line-height: 1.55; }
 
-      /* ===== MISI & KKN: 2 kolom agar hemat ruang ===== */
       .misi-grid { grid-template-columns: repeat(2, 1fr); }
-      .kkn-grid  { grid-template-columns: repeat(2, 1fr); }
-      .kkn-card  { padding: 1.4rem; }
       .misi-card { padding: 1.2rem; }
 
-      /* Portrait fix: background-attachment fixed rusak di iOS/mobile */
+      /* ===== KKN PORTRAIT: switch ke <img> tag, foto tampil penuh ===== */
       .kkn {
+        background-image: none;       /* hapus bg foto */
         background-attachment: scroll;
-        background-position: center top;
-        background-size: cover;
+        background-color: var(--navy-deep);
+        padding-top: 0;               /* foto langsung menempel di atas */
+      }
+      .kkn::before { display: none; } /* sembunyikan overlay karena tidak ada bg foto */
+
+      /* Tampilkan tag <img> foto tim */
+      .kkn-hero-img {
+        display: block;
+        width: 100%;
+        height: auto;           /* tinggi mengikuti proporsi asli foto = utuh */
+        object-fit: contain;
+        border-radius: 0 0 24px 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+        margin-bottom: 0;
       }
 
-      /* ===== KONTAK ===== */
+      /* Konten seksi KKN (judul + kartu) di bawah foto */
+      .kkn .container {
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
+      }
+
+      /* Kartu kembali ke solid agar terbaca di atas navy */
+      .kkn-card {
+        background: rgba(255,255,255,0.10);
+        border: 1px solid rgba(255,255,255,0.18);
+      }
+
+      .kkn-grid { grid-template-columns: repeat(2, 1fr); }
+      .kkn-card { padding: 1.4rem; }
+
       .kontak-grid { grid-template-columns: 1fr; }
       .kontak-map  { height: 220px; }
-
-      /* ===== GALERI ===== */
       .nav-links { display: none; }
       .galeri-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
       .gal-item:first-child { grid-column: span 2; min-height: 200px; }
       .galeri-hdr { margin-bottom: 1.5rem; }
-
-      /* ===== FOOTER ===== */
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
     }
@@ -1432,13 +1434,6 @@
       .kkn-grid  { grid-template-columns: 1fr; }
       .misi-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-
-      /* Hp kecil portrait: foto tetap cover penuh, tidak terpotong */
-      .kkn {
-        background-attachment: scroll;
-        background-position: center 20%;
-        background-size: cover;
-      }
     }
   </style>
 </head>
@@ -1816,6 +1811,12 @@
 
   <!-- PROGRAM KKN -->
   <section class="kkn section" id="kkn">
+    <!-- Foto tim: muncul di portrait, tersembunyi di desktop (bg-image dipakai) -->
+    <img
+      src="images/tim-kkn.jpeg"
+      alt="Tim KKN Berdampak UNRI 2026 — Desa Jangkang"
+      class="kkn-hero-img"
+    >
     <div class="container">
       <div style="text-align:center; max-width:600px; margin:0 auto;">
         <div class="tag" style="justify-content:center;">Program KKN UNRI 2026</div>

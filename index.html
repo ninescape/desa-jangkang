@@ -128,6 +128,22 @@
       color: var(--text-mid);
     }
 
+    /* KKN section pakai foto sebagai background — warna teks tetap putih di dark mode */
+    [data-theme="dark"] .kkn .section-title,
+    [data-theme="dark"] .kkn .section-desc,
+    [data-theme="dark"] .kkn .kkn-title,
+    [data-theme="dark"] .kkn .kkn-desc {
+      color: inherit;
+    }
+    [data-theme="dark"] .kkn::before {
+      background: linear-gradient(
+        160deg,
+        rgba(5, 10, 30, 0.88) 0%,
+        rgba(8, 15, 45, 0.82) 40%,
+        rgba(13, 27, 75, 0.78) 100%
+      );
+    }
+
     [data-theme="dark"] .kkn-badge {
       background: rgba(61,109,197,0.25);
       color: #a8c4f0;
@@ -1009,7 +1025,37 @@
     .gal-item:hover .gal-caption { opacity: 1; }
 
     /* ======= PROGRAM KKN ======= */
-    .kkn { background: var(--bg-kkn); }
+    /* ======= KKN — FOTO SEBAGAI BACKGROUND ======= */
+    .kkn {
+      background-color: var(--navy-deep);
+      background-image: url('images/tim-kkn.jpeg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Overlay gelap di atas foto supaya teks tetap terbaca */
+    .kkn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(10, 22, 56, 0.82) 0%,
+        rgba(13, 27, 75, 0.75) 40%,
+        rgba(26, 50, 114, 0.70) 100%
+      );
+      z-index: 0;
+    }
+
+    .kkn .container { position: relative; z-index: 1; }
+
+    /* Judul & deskripsi menjadi putih di atas foto */
+    .kkn .section-title { color: #ffffff; }
+    .kkn .tag           { color: var(--gold-light); }
+    .kkn .section-desc  { color: rgba(255,255,255,0.75); }
 
     .kkn-grid {
       display: grid;
@@ -1018,24 +1064,30 @@
       margin-top: 3rem;
     }
 
+    /* Kartu glassmorphism — transparan di atas foto */
     .kkn-card {
-      background: var(--bg-kkncard);
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-radius: 20px;
       padding: 2rem;
-      border-top: 4px solid var(--navy-light);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-top: 4px solid rgba(255,255,255,0.45);
       transition: all 0.35s;
-      box-shadow: 0 2px 14px rgba(13,27,75,0.07);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.20);
     }
 
     .kkn-card:nth-child(2) { border-top-color: var(--gold); }
-    .kkn-card:nth-child(3) { border-top-color: var(--earth); }
-    .kkn-card:nth-child(4) { border-top-color: var(--navy-mid); }
-    .kkn-card:nth-child(5) { border-top-color: var(--gold-light); }
-    .kkn-card:nth-child(6) { border-top-color: var(--navy-light); }
+    .kkn-card:nth-child(3) { border-top-color: var(--gold-light); }
+    .kkn-card:nth-child(4) { border-top-color: var(--navy-light); }
+    .kkn-card:nth-child(5) { border-top-color: var(--gold); }
+    .kkn-card:nth-child(6) { border-top-color: rgba(255,255,255,0.45); }
 
     .kkn-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 36px rgba(13,27,75,0.12);
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.30);
+      border-color: rgba(255,255,255,0.35);
     }
 
     .kkn-icon { font-size: 2.2rem; margin-bottom: 1rem; }
@@ -1044,20 +1096,21 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem;
       font-weight: 600;
-      color: var(--navy-deep);
+      color: #ffffff;
       margin-bottom: 0.6rem;
     }
 
     .kkn-desc {
       font-size: 0.86rem;
-      color: var(--text-mid);
+      color: rgba(255, 255, 255, 0.78);
       line-height: 1.65;
     }
 
     .kkn-badge {
       display: inline-block;
-      background: var(--navy-pale);
-      color: var(--navy-deep);
+      background: rgba(201, 162, 39, 0.25);
+      color: var(--gold-light);
+      border: 1px solid rgba(201, 162, 39, 0.45);
       font-size: 0.72rem;
       font-weight: 600;
       padding: 0.3rem 0.9rem;

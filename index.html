@@ -9,19 +9,19 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --green-deep:   #1B4332;
-      --green-mid:    #2D6A4F;
-      --green-light:  #52B788;
-      --green-pale:   #D8F3DC;
-      --gold:         #C9943A;
-      --gold-light:   #F4D58D;
-      --cream:        #FEFAE0;
-      --sand:         #F0E6C8;
-      --earth:        #7C5C3E;
-      --text-dark:    #1A1A1A;
-      --text-mid:     #444444;
-      --text-light:   #777777;
-      --border:       rgba(0,0,0,0.08);
+      --navy-deep:   #0D1B4B;
+      --navy-mid:    #1A3272;
+      --navy-light:  #3D6DC5;
+      --navy-pale:   #D6E4FF;
+      --gold:        #C9A227;
+      --gold-light:  #F0D468;
+      --cream:       #F5F8FF;
+      --sand:        #EAF0FF;
+      --earth:       #B8891A;
+      --text-dark:   #0A1628;
+      --text-mid:    #2A3A5C;
+      --text-light:  #6272A0;
+      --border:      rgba(26,50,114,0.1);
     }
 
     html { scroll-behavior: smooth; }
@@ -46,10 +46,10 @@
     }
 
     nav.scrolled {
-      background: rgba(27, 67, 50, 0.97);
+      background: rgba(13, 27, 75, 0.97);
       backdrop-filter: blur(14px);
       padding: 0.9rem 5rem;
-      box-shadow: 0 2px 40px rgba(0,0,0,0.18);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.22);
     }
 
     .nav-logo {
@@ -104,7 +104,7 @@
       transition: background 0.2s !important;
     }
 
-    .nav-cta:hover { background: #a87a28 !important; }
+    .nav-cta:hover { background: #a8841e !important; }
 
     /* ======= HERO ======= */
     .hero {
@@ -118,9 +118,9 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 15% 55%, rgba(45,106,79,0.65) 0%, transparent 60%),
-        radial-gradient(ellipse at 85% 20%, rgba(201,148,58,0.28) 0%, transparent 50%),
-        linear-gradient(145deg, #1B4332 0%, #2D6A4F 35%, #40916C 65%, #1B4332 100%);
+        radial-gradient(ellipse at 15% 55%, rgba(26,50,114,0.7) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 20%, rgba(201,162,39,0.3) 0%, transparent 50%),
+        linear-gradient(145deg, #0D1B4B 0%, #1A3272 35%, #2347A0 65%, #0D1B4B 100%);
     }
 
     .hero-pattern {
@@ -145,8 +145,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(201,148,58,0.22);
-      border: 1px solid rgba(201,148,58,0.45);
+      background: rgba(201,162,39,0.22);
+      border: 1px solid rgba(201,162,39,0.45);
       color: var(--gold-light);
       padding: 0.45rem 1.1rem;
       border-radius: 100px;
@@ -204,13 +204,13 @@
       font-size: 0.88rem;
       letter-spacing: 0.03em;
       transition: all 0.3s;
-      box-shadow: 0 6px 24px rgba(201,148,58,0.38);
+      box-shadow: 0 6px 24px rgba(201,162,39,0.38);
     }
 
     .btn-primary:hover {
-      background: #a87a28;
+      background: #a8841e;
       transform: translateY(-2px);
-      box-shadow: 0 10px 36px rgba(201,148,58,0.48);
+      box-shadow: 0 10px 36px rgba(201,162,39,0.48);
     }
 
     .btn-ghost {
@@ -306,7 +306,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      color: var(--green-mid);
+      color: var(--navy-mid);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.13em;
@@ -325,7 +325,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.1rem, 4vw, 3.6rem);
       font-weight: 600;
-      color: var(--green-deep);
+      color: var(--navy-deep);
       line-height: 1.12;
       margin-bottom: 1.2rem;
     }
@@ -352,7 +352,7 @@
     .img-main {
       width: 100%;
       height: 440px;
-      background: linear-gradient(145deg, #2D6A4F 0%, #40916C 50%, #52B788 100%);
+      background: linear-gradient(145deg, #0D1B4B 0%, #1A3272 50%, #2347A0 100%);
       border-radius: 22px;
       display: flex;
       align-items: center;
@@ -365,8 +365,8 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 25% 75%, rgba(201,148,58,0.3), transparent 60%),
-        radial-gradient(ellipse at 75% 20%, rgba(255,255,255,0.08), transparent 55%);
+        radial-gradient(ellipse at 25% 75%, rgba(201,162,39,0.3), transparent 60%),
+        radial-gradient(ellipse at 75% 20%, rgba(255,255,255,0.06), transparent 55%);
     }
 
     .img-main-emoji {
@@ -378,7 +378,7 @@
     .img-overlay {
       position: absolute;
       bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
-      background: rgba(15, 43, 29, 0.88);
+      background: rgba(6, 13, 46, 0.90);
       backdrop-filter: blur(10px);
       border-radius: 14px;
       padding: 1.1rem 1.4rem;
@@ -414,7 +414,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.6rem;
       font-weight: 700;
-      color: var(--green-deep);
+      color: var(--navy-deep);
       line-height: 1;
     }
 
@@ -462,7 +462,7 @@
 
     /* ======= VISI MISI ======= */
     .visimisi {
-      background: var(--green-deep);
+      background: var(--navy-deep);
       position: relative;
       overflow: hidden;
     }
@@ -472,7 +472,7 @@
       position: absolute;
       top: -40%; right: -15%;
       width: 650px; height: 650px;
-      background: radial-gradient(circle, rgba(201,148,58,0.11) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -481,7 +481,7 @@
       position: absolute;
       bottom: -30%; left: -8%;
       width: 550px; height: 550px;
-      background: radial-gradient(circle, rgba(82,183,136,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(61,109,197,0.15) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -490,7 +490,7 @@
     .visimisi .tag { color: var(--gold-light); }
 
     .visi-box {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.13);
       border-radius: 22px;
       padding: 2.6rem;
@@ -544,7 +544,7 @@
 
     .misi-card:hover {
       background: rgba(255,255,255,0.1);
-      border-color: rgba(201,148,58,0.4);
+      border-color: rgba(201,162,39,0.4);
       transform: translateY(-4px);
     }
 
@@ -553,7 +553,7 @@
       font-size: 2.6rem;
       font-weight: 700;
       color: var(--gold);
-      opacity: 0.55;
+      opacity: 0.6;
       line-height: 1;
       margin-bottom: 0.8rem;
     }
@@ -579,18 +579,18 @@
       border-radius: 22px;
       padding: 2.2rem 1.8rem;
       text-align: center;
-      box-shadow: 0 4px 22px rgba(0,0,0,0.055);
-      border-top: 4.5px solid var(--green-mid);
+      box-shadow: 0 4px 22px rgba(13,27,75,0.07);
+      border-top: 4.5px solid var(--navy-mid);
       transition: all 0.3s;
     }
 
     .stat-card:nth-child(2) { border-top-color: var(--gold); }
     .stat-card:nth-child(3) { border-top-color: var(--earth); }
-    .stat-card:nth-child(4) { border-top-color: var(--green-light); }
+    .stat-card:nth-child(4) { border-top-color: var(--navy-light); }
 
     .stat-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 14px 44px rgba(0,0,0,0.1);
+      box-shadow: 0 14px 44px rgba(13,27,75,0.12);
     }
 
     .stat-icon { font-size: 2.1rem; margin-bottom: 0.8rem; }
@@ -599,7 +599,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 3.2rem;
       font-weight: 700;
-      color: var(--green-deep);
+      color: var(--navy-deep);
       line-height: 1;
       margin-bottom: 0.4rem;
     }
@@ -645,12 +645,12 @@
       position: relative;
     }
 
-    .pot-card:nth-child(1) .pot-img { background: linear-gradient(135deg, #1B4332, #2D6A4F); }
-    .pot-card:nth-child(2) .pot-img { background: linear-gradient(135deg, #2D6A4F, #52B788); }
-    .pot-card:nth-child(3) .pot-img { background: linear-gradient(135deg, #C9943A, #E4973D); }
-    .pot-card:nth-child(4) .pot-img { background: linear-gradient(135deg, #7C5C3E, #A07850); }
-    .pot-card:nth-child(5) .pot-img { background: linear-gradient(135deg, #40916C, #52B788); }
-    .pot-card:nth-child(6) .pot-img { background: linear-gradient(135deg, #1B4332, #3B6D3B); }
+    .pot-card:nth-child(1) .pot-img { background: linear-gradient(135deg, #0D1B4B, #1A3272); }
+    .pot-card:nth-child(2) .pot-img { background: linear-gradient(135deg, #1A3272, #2E53A8); }
+    .pot-card:nth-child(3) .pot-img { background: linear-gradient(135deg, #C9A227, #E4B830); }
+    .pot-card:nth-child(4) .pot-img { background: linear-gradient(135deg, #B8891A, #C9A227); }
+    .pot-card:nth-child(5) .pot-img { background: linear-gradient(135deg, #2347A0, #3D6DC5); }
+    .pot-card:nth-child(6) .pot-img { background: linear-gradient(135deg, #0D1B4B, #1A3272); }
 
     .pot-body {
       background: var(--cream);
@@ -664,7 +664,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--green-deep);
+      color: var(--navy-deep);
       margin-bottom: 0.5rem;
     }
 
@@ -716,22 +716,22 @@
       text-align: center;
       border: 2px solid var(--border);
       min-width: 150px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 14px rgba(13,27,75,0.07);
       transition: all 0.3s;
     }
 
     .org-card:hover {
-      border-color: var(--green-light);
-      box-shadow: 0 6px 24px rgba(45,106,79,0.12);
+      border-color: var(--navy-light);
+      box-shadow: 0 6px 24px rgba(26,50,114,0.14);
     }
 
     .org-card.main {
-      background: var(--green-deep);
-      border-color: var(--green-deep);
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
     }
 
     .org-card.sub {
-      border-color: rgba(201,148,58,0.4);
+      border-color: rgba(201,162,39,0.5);
     }
 
     .org-ava {
@@ -749,12 +749,12 @@
     }
 
     .org-card:not(.main):not(.sub) .org-ava {
-      background: var(--green-pale);
-      color: var(--green-deep);
+      background: var(--navy-pale);
+      color: var(--navy-deep);
     }
 
     .org-card.sub .org-ava {
-      background: rgba(201,148,58,0.15);
+      background: rgba(201,162,39,0.15);
       color: var(--earth);
     }
 
@@ -775,7 +775,7 @@
 
     /* ======= GALERI ======= */
     .galeri {
-      background: var(--green-deep);
+      background: var(--navy-deep);
       overflow: hidden;
     }
 
@@ -819,16 +819,16 @@
       font-size: 3.2rem;
     }
 
-    .gal-item:nth-child(1) .gal-inner { background: linear-gradient(135deg, #40916C, #2D6A4F); min-height: 100%; }
-    .gal-item:nth-child(2) .gal-inner { background: linear-gradient(135deg, #C9943A, #B8832A); }
-    .gal-item:nth-child(3) .gal-inner { background: linear-gradient(135deg, #7C5C3E, #5A3D22); }
-    .gal-item:nth-child(4) .gal-inner { background: linear-gradient(135deg, #1B4332, #40916C); }
-    .gal-item:nth-child(5) .gal-inner { background: linear-gradient(135deg, #52B788, #2D6A4F); }
+    .gal-item:nth-child(1) .gal-inner { background: linear-gradient(135deg, #1A3272, #0D1B4B); min-height: 100%; }
+    .gal-item:nth-child(2) .gal-inner { background: linear-gradient(135deg, #C9A227, #A88020); }
+    .gal-item:nth-child(3) .gal-inner { background: linear-gradient(135deg, #2347A0, #1A3272); }
+    .gal-item:nth-child(4) .gal-inner { background: linear-gradient(135deg, #0D1B4B, #2347A0); }
+    .gal-item:nth-child(5) .gal-inner { background: linear-gradient(135deg, #3D6DC5, #1A3272); }
 
     .gal-caption {
       position: absolute;
       bottom: 0.8rem; left: 0.8rem; right: 0.8rem;
-      background: rgba(15,43,29,0.85);
+      background: rgba(6,13,46,0.88);
       backdrop-filter: blur(8px);
       color: white;
       font-size: 0.8rem;
@@ -854,9 +854,9 @@
       background: white;
       border-radius: 20px;
       padding: 2rem;
-      border-top: 4px solid var(--green-light);
+      border-top: 4px solid var(--navy-light);
       transition: all 0.3s;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 14px rgba(13,27,75,0.07);
     }
 
     .kkn-card:nth-child(2) { border-top-color: var(--gold); }
@@ -864,7 +864,7 @@
 
     .kkn-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+      box-shadow: 0 12px 36px rgba(13,27,75,0.12);
     }
 
     .kkn-icon { font-size: 2.2rem; margin-bottom: 1rem; }
@@ -873,7 +873,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem;
       font-weight: 600;
-      color: var(--green-deep);
+      color: var(--navy-deep);
       margin-bottom: 0.6rem;
     }
 
@@ -885,8 +885,8 @@
 
     .kkn-badge {
       display: inline-block;
-      background: var(--green-pale);
-      color: var(--green-deep);
+      background: var(--navy-pale);
+      color: var(--navy-deep);
       font-size: 0.72rem;
       font-weight: 600;
       padding: 0.3rem 0.9rem;
@@ -920,7 +920,7 @@
 
     .k-icon {
       width: 46px; height: 46px;
-      background: var(--green-pale);
+      background: var(--navy-pale);
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem;
@@ -953,8 +953,7 @@
     .kontak-map::before {
       content: '';
       position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 30% 30%, rgba(45,106,79,0.1), transparent 60%);
+      background: radial-gradient(ellipse at 30% 30%, rgba(26,50,114,0.08), transparent 60%);
     }
 
     .map-inner {
@@ -968,7 +967,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--green-deep);
+      color: var(--navy-deep);
       margin-bottom: 0.3rem;
     }
 
@@ -980,24 +979,24 @@
 
     .map-btn {
       display: inline-block;
-      color: var(--green-mid);
+      color: var(--navy-mid);
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 600;
-      border: 2px solid var(--green-mid);
+      border: 2px solid var(--navy-mid);
       padding: 0.55rem 1.5rem;
       border-radius: 100px;
       transition: all 0.25s;
     }
 
     .map-btn:hover {
-      background: var(--green-mid);
+      background: var(--navy-mid);
       color: white;
     }
 
     /* ======= FOOTER ======= */
     footer {
-      background: #0F2B1D;
+      background: #060D2E;
       color: white;
       padding: 5rem;
     }
@@ -1039,8 +1038,8 @@
 
     .kkn-tag {
       display: inline-block;
-      background: rgba(201,148,58,0.14);
-      border: 1px solid rgba(201,148,58,0.3);
+      background: rgba(201,162,39,0.14);
+      border: 1px solid rgba(201,162,39,0.3);
       color: var(--gold-light);
       font-size: 0.74rem;
       padding: 0.38rem 1rem;
@@ -1166,8 +1165,8 @@
         </h1>
         <p class="hero-sub">Pesisir Bengkalis yang Lestari &amp; Berbudaya</p>
         <p class="hero-desc">
-          Desa Jangkang adalah desa pesisir yang kaya akan warisan budaya Melayu, 
-          kekayaan laut, dan semangat gotong royong. Kami terus bergerak maju &mdash; 
+          Desa Jangkang adalah desa pesisir yang kaya akan warisan budaya Melayu,
+          kekayaan laut, dan semangat gotong royong. Kami terus bergerak maju &mdash;
           membangun desa, menjaga akar.
         </p>
         <div class="hero-actions">
@@ -1182,7 +1181,7 @@
           <div class="hero-card-lbl">Total Penduduk</div>
         </div>
         <div class="hero-card">
-          <div class="hero-card-icon">&#127864;</div>
+          <div class="hero-card-icon">&#127968;</div>
           <div class="hero-card-num">842</div>
           <div class="hero-card-lbl">Kepala Keluarga</div>
         </div>
@@ -1192,7 +1191,7 @@
           <div class="hero-card-lbl">Luas (km&sup2;)</div>
         </div>
         <div class="hero-card">
-          <div class="hero-card-icon">&#128332;</div>
+          <div class="hero-card-icon">&#9973;</div>
           <div class="hero-card-num">5</div>
           <div class="hero-card-lbl">Dusun</div>
         </div>
@@ -1207,7 +1206,7 @@
       <div class="about-grid">
         <div class="img-stack">
           <div class="img-main">
-            <div class="img-main-emoji">&#127807;</div>
+            <div class="img-main-emoji">&#9973;</div>
             <div class="img-overlay">
               <strong>Desa Jangkang</strong>
               <span>Kecamatan Bantan, Kabupaten Bengkalis, Riau</span>
@@ -1222,9 +1221,9 @@
           <div class="tag">Tentang Desa</div>
           <h2 class="section-title">Mengenal Desa<br><em>Jangkang</em></h2>
           <p class="section-desc">
-            Desa Jangkang adalah salah satu desa yang terletak di Kecamatan Bantan, 
-            Kabupaten Bengkalis, Provinsi Riau. Berbatasan langsung dengan pesisir 
-            Selat Bengkalis, desa ini dihuni oleh masyarakat Melayu yang menjunjung 
+            Desa Jangkang adalah salah satu desa yang terletak di Kecamatan Bantan,
+            Kabupaten Bengkalis, Provinsi Riau. Berbatasan langsung dengan pesisir
+            Selat Bengkalis, desa ini dihuni oleh masyarakat Melayu yang menjunjung
             tinggi adat istiadat dan kearifan lokal leluhur.
           </p>
           <div class="info-list">
@@ -1271,7 +1270,7 @@
       <div class="visi-box">
         <span class="visi-pill">VISI</span>
         <p class="visi-text">
-          &ldquo;Terwujudnya Desa Jangkang yang Maju, Mandiri, Sejahtera, dan Berbudaya 
+          &ldquo;Terwujudnya Desa Jangkang yang Maju, Mandiri, Sejahtera, dan Berbudaya
           Berlandaskan Keimanan dan Ketaqwaan kepada Tuhan Yang Maha Esa.&rdquo;
         </p>
       </div>
@@ -1320,12 +1319,12 @@
           <div class="stat-lbl">Total Penduduk</div>
         </div>
         <div class="stat-card fade-up">
-          <div class="stat-icon">&#127864;</div>
+          <div class="stat-icon">&#127968;</div>
           <div class="stat-num">842</div>
           <div class="stat-lbl">Kepala Keluarga</div>
         </div>
         <div class="stat-card fade-up">
-          <div class="stat-icon">&#128104;&#8205;&#128105;&#8205;&#128103;</div>
+          <div class="stat-icon">&#128104;</div>
           <div class="stat-num">1.453</div>
           <div class="stat-lbl">Penduduk Laki-laki</div>
         </div>
@@ -1347,7 +1346,7 @@
           <h2 class="section-title">Potensi &amp;<br><em>Sumber Daya</em></h2>
         </div>
         <p class="section-desc" style="max-width:340px;">
-          Desa Jangkang kaya akan potensi alam, budaya, dan sumber daya 
+          Desa Jangkang kaya akan potensi alam, budaya, dan sumber daya
           manusia yang terus dikembangkan demi kemakmuran bersama.
         </p>
       </div>
@@ -1485,7 +1484,7 @@
           <div class="gal-caption">Festival Budaya Melayu</div>
         </div>
         <div class="gal-item">
-          <div class="gal-inner">&#127907;</div>
+          <div class="gal-inner">&#128676;</div>
           <div class="gal-caption">Nelayan Tradisional</div>
         </div>
         <div class="gal-item">
@@ -1502,7 +1501,7 @@
       <div class="tag">Program KKN UNRI 2024</div>
       <h2 class="section-title">Program Kerja<br><em>Tim KKN</em></h2>
       <p class="section-desc">
-        Tim KKN Universitas Riau hadir di Desa Jangkang untuk mendukung 
+        Tim KKN Universitas Riau hadir di Desa Jangkang untuk mendukung
         pembangunan melalui program-program nyata berbasis kebutuhan warga.
       </p>
       <div class="kkn-grid">
@@ -1598,10 +1597,10 @@
           <span class="footer-brand-name">Desa Jangkang</span>
         </div>
         <p class="footer-tagline">
-          Kecamatan Bantan, Kabupaten Bengkalis, Provinsi Riau &mdash; 
+          Kecamatan Bantan, Kabupaten Bengkalis, Provinsi Riau &mdash;
           masyarakat yang bersatu, berbudaya, dan terus berkembang.
         </p>
-        <span class="kkn-tag">&#127891; Program KKN UNRI 2024</span>
+        <span class="kkn-tag">&#127891; KKN Berdampak &mdash; UNRI Membangun Kampung 2024</span>
       </div>
 
       <div class="footer-col">

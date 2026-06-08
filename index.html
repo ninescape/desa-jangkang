@@ -8,6 +8,14 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* Smooth theme transitions */
+    body, .about, .statistik, .potensi, .pemerintahan, .kkn, .kontak,
+    .stat-card, .org-card, .kkn-card, .pot-body, .info-item,
+    .kontak-map, .img-badge, .k-icon, section {
+      transition: background 0.35s ease, color 0.35s ease,
+                  border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
     :root {
       --navy-deep:   #0D1B4B;
       --navy-mid:    #1A3272;
@@ -22,15 +30,175 @@
       --text-mid:    #2A3A5C;
       --text-light:  #6272A0;
       --border:      rgba(26,50,114,0.1);
+
+      /* Light mode surface tokens */
+      --bg-body:        #F5F8FF;
+      --bg-white:       #ffffff;
+      --bg-about:       #ffffff;
+      --bg-potensi:     #ffffff;
+      --bg-kontak:      #ffffff;
+      --bg-pemerintahan: #F5F8FF;
+      --bg-statistik:   #EAF0FF;
+      --bg-kkn:         #EAF0FF;
+      --bg-sand:        #EAF0FF;
+      --bg-cream:       #F5F8FF;
+      --bg-orgcard:     #ffffff;
+      --bg-statcard:    #ffffff;
+      --bg-kkncard:     #ffffff;
+      --pot-body-bg:    #F5F8FF;
+      --info-item-bg:   #F5F8FF;
+      --kontak-map-bg:  #EAF0FF;
+      --img-badge-bg:   #EAF0FF;
+      --img-badge-border: #ffffff;
+      --k-icon-bg:      #D6E4FF;
     }
+
+    [data-theme="dark"] {
+      --navy-pale:   #1e2d5a;
+      --cream:       #0f1629;
+      --sand:        #111d3a;
+      --text-dark:   #e8edf8;
+      --text-mid:    #a8b8d8;
+      --text-light:  #7888b0;
+      --border:      rgba(100,130,200,0.15);
+
+      --bg-body:        #0f1629;
+      --bg-white:       #162040;
+      --bg-about:       #162040;
+      --bg-potensi:     #162040;
+      --bg-kontak:      #162040;
+      --bg-pemerintahan: #0f1629;
+      --bg-statistik:   #111d3a;
+      --bg-kkn:         #111d3a;
+      --bg-sand:        #111d3a;
+      --bg-cream:       #0f1629;
+      --bg-orgcard:     #1a2a50;
+      --bg-statcard:    #1a2a50;
+      --bg-kkncard:     #1a2a50;
+      --pot-body-bg:    #1a2a50;
+      --info-item-bg:   #1a2a50;
+      --kontak-map-bg:  #111d3a;
+      --img-badge-bg:   #1a2a50;
+      --img-badge-border: #1a2a50;
+      --k-icon-bg:      #1e2d5a;
+    }
+
+    /* Dark mode text overrides — elemen yang pakai warna hardcoded navy-deep */
+    [data-theme="dark"] .section-title,
+    [data-theme="dark"] .stat-num,
+    [data-theme="dark"] .stat-lbl,
+    [data-theme="dark"] .pot-title,
+    [data-theme="dark"] .pot-desc,
+    [data-theme="dark"] .kkn-title,
+    [data-theme="dark"] .kkn-desc,
+    [data-theme="dark"] .org-name,
+    [data-theme="dark"] .org-pos,
+    [data-theme="dark"] .info-val,
+    [data-theme="dark"] .info-lbl,
+    [data-theme="dark"] .k-val,
+    [data-theme="dark"] .k-lbl,
+    [data-theme="dark"] .map-inner-title,
+    [data-theme="dark"] .map-inner-sub,
+    [data-theme="dark"] .img-badge-num,
+    [data-theme="dark"] .img-badge-lbl,
+    [data-theme="dark"] .section-desc,
+    [data-theme="dark"] .tag {
+      color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .tag {
+      color: var(--gold-light);
+    }
+
+    [data-theme="dark"] .section-desc {
+      color: var(--text-mid);
+    }
+
+    [data-theme="dark"] .stat-lbl,
+    [data-theme="dark"] .info-lbl,
+    [data-theme="dark"] .k-lbl,
+    [data-theme="dark"] .org-pos,
+    [data-theme="dark"] .map-inner-sub,
+    [data-theme="dark"] .img-badge-lbl {
+      color: var(--text-light);
+    }
+
+    [data-theme="dark"] .kkn-desc,
+    [data-theme="dark"] .pot-desc {
+      color: var(--text-mid);
+    }
+
+    [data-theme="dark"] .kkn-badge {
+      background: rgba(61,109,197,0.25);
+      color: #a8c4f0;
+    }
+
+    [data-theme="dark"] .map-btn {
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    [data-theme="dark"] .map-btn:hover {
+      background: var(--gold);
+      color: white;
+      border-color: var(--gold);
+    }
+
+    [data-theme="dark"] .org-card:not(.main) .org-ava {
+      background: rgba(61,109,197,0.2);
+      color: #a8c4f0;
+    }
+
+    [data-theme="dark"] .org-card.sub .org-ava {
+      background: rgba(201,162,39,0.2);
+      color: var(--gold-light);
+    }
+
+    /* ======= THEME TOGGLE BUTTON ======= */
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.55);
+      transform: scale(1.08);
+    }
+
+    .theme-toggle-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: opacity 0.25s, transform 0.35s;
+      position: absolute;
+    }
+
+    .icon-sun  { opacity: 1;  transform: rotate(0deg) scale(1); }
+    .icon-moon { opacity: 0;  transform: rotate(-90deg) scale(0.7); }
+
+    [data-theme="dark"] .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.7); }
+    [data-theme="dark"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: var(--cream);
+      background: var(--bg-body);
       color: var(--text-dark);
       overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
     /* ======= NAVIGATION ======= */
@@ -338,7 +506,7 @@
     }
 
     /* ======= ABOUT ======= */
-    .about { background: #fff; }
+    .about { background: var(--bg-about); }
 
     .about-grid {
       display: grid;
@@ -402,9 +570,9 @@
       position: absolute;
       top: -1.5rem; right: -1.5rem;
       width: 138px; height: 138px;
-      background: var(--sand);
+      background: var(--img-badge-bg);
       border-radius: 18px;
-      border: 6px solid white;
+      border: 6px solid var(--img-badge-border);
       box-shadow: 0 8px 30px rgba(0,0,0,0.1);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
@@ -438,7 +606,7 @@
       align-items: flex-start;
       gap: 1rem;
       padding: 1rem 1.3rem;
-      background: var(--cream);
+      background: var(--info-item-bg);
       border-radius: 14px;
       border-left: 3.5px solid var(--gold);
     }
@@ -565,7 +733,7 @@
     }
 
     /* ======= STATISTIK ======= */
-    .statistik { background: var(--sand); }
+    .statistik { background: var(--bg-statistik); }
 
     .stats-grid {
       display: grid;
@@ -575,7 +743,7 @@
     }
 
     .stat-card {
-      background: white;
+      background: var(--bg-statcard);
       border-radius: 22px;
       padding: 2.2rem 1.8rem;
       text-align: center;
@@ -611,7 +779,7 @@
     }
 
     /* ======= POTENSI ======= */
-    .potensi { background: white; }
+    .potensi { background: var(--bg-potensi); }
 
     .potensi-hdr {
       display: flex;
@@ -653,7 +821,7 @@
     .pot-card:nth-child(6) .pot-img { background: linear-gradient(135deg, #0D1B4B, #1A3272); }
 
     .pot-body {
-      background: var(--cream);
+      background: var(--pot-body-bg);
       padding: 1.5rem 1.6rem;
       border: 1px solid var(--border);
       border-top: none;
@@ -675,7 +843,7 @@
     }
 
     /* ======= PEMERINTAHAN ======= */
-    .pemerintahan { background: var(--cream); }
+    .pemerintahan { background: var(--bg-pemerintahan); }
 
     .org { margin-top: 3.5rem; }
 
@@ -710,7 +878,7 @@
     }
 
     .org-card {
-      background: white;
+      background: var(--bg-orgcard);
       border-radius: 18px;
       padding: 1.3rem 1.6rem;
       text-align: center;
@@ -841,7 +1009,7 @@
     .gal-item:hover .gal-caption { opacity: 1; }
 
     /* ======= PROGRAM KKN ======= */
-    .kkn { background: var(--sand); }
+    .kkn { background: var(--bg-kkn); }
 
     .kkn-grid {
       display: grid;
@@ -851,11 +1019,11 @@
     }
 
     .kkn-card {
-      background: white;
+      background: var(--bg-kkncard);
       border-radius: 20px;
       padding: 2rem;
       border-top: 4px solid var(--navy-light);
-      transition: all 0.3s;
+      transition: all 0.35s;
       box-shadow: 0 2px 14px rgba(13,27,75,0.07);
     }
 
@@ -896,7 +1064,7 @@
     }
 
     /* ======= KONTAK ======= */
-    .kontak { background: white; }
+    .kontak { background: var(--bg-kontak); }
 
     .kontak-grid {
       display: grid;
@@ -920,7 +1088,7 @@
 
     .k-icon {
       width: 46px; height: 46px;
-      background: var(--navy-pale);
+      background: var(--k-icon-bg);
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem;
@@ -942,7 +1110,7 @@
     }
 
     .kontak-map {
-      background: var(--sand);
+      background: var(--kontak-map-bg);
       border-radius: 22px;
       height: 380px;
       display: flex; align-items: center; justify-content: center;
@@ -1148,6 +1316,10 @@
       <li><a href="#kkn">Program KKN</a></li>
       <li><a href="#kontak" class="nav-cta">Kontak</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
+      <span class="theme-toggle-icon icon-sun">☀️</span>
+      <span class="theme-toggle-icon icon-moon">🌙</span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -1644,11 +1816,13 @@
   </footer>
 
   <script>
+    /* ---- Navbar scroll ---- */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
     });
 
+    /* ---- Intersection observer for fade-up ---- */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('show');
@@ -1657,6 +1831,7 @@
 
     document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
+    /* ---- Smooth scroll ---- */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
@@ -1665,6 +1840,21 @@
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
+    });
+
+    /* ---- Dark / Light Mode Toggle ---- */
+    const toggleBtn = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Load saved preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
     });
   </script>
 

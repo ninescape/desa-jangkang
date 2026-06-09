@@ -1069,6 +1069,8 @@
       border-top: 4px solid rgba(255,255,255,0.45);
       transition: all 0.35s;
       box-shadow: 0 4px 24px rgba(0,0,0,0.20);
+      display: flex;
+      flex-direction: column;
     }
 
     .kkn-card:nth-child(2) { border-top-color: var(--gold); }
@@ -1109,8 +1111,10 @@
       font-weight: 600;
       padding: 0.3rem 0.9rem;
       border-radius: 100px;
-      margin-top: 1rem;
+      margin-top: auto;
+      padding-top: calc(1rem + 0.3rem);
       letter-spacing: 0.04em;
+      align-self: flex-start;
     }
 
     /* ======= KONTAK ======= */

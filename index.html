@@ -11,7 +11,7 @@
     /* Smooth theme transitions */
     body, .about, .statistik, .potensi, .pemerintahan, .kkn, .kontak,
     .stat-card, .org-card, .kkn-card, .pot-body, .info-item,
-    .kontak-map, .img-badge, .k-icon, section {
+    .kontak-map, .img-badge, .k-icon, .tim-card, section {
       transition: background 0.35s ease, color 0.35s ease,
                   border-color 0.35s ease, box-shadow 0.35s ease;
     }
@@ -102,8 +102,13 @@
     [data-theme="dark"] .img-badge-num,
     [data-theme="dark"] .img-badge-lbl,
     [data-theme="dark"] .section-desc,
+    [data-theme="dark"] .tim-name,
     [data-theme="dark"] .tag {
       color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .tim-faculty {
+      color: var(--text-light);
     }
 
     [data-theme="dark"] .tag {
@@ -1114,6 +1119,124 @@
       align-self: flex-start;
     }
 
+    /* ======= TIM KKN ======= */
+    .tim { background: var(--bg-statistik); }
+
+    .tim-featured-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .tim-card {
+      background: var(--bg-white);
+      border-radius: 22px;
+      padding: 2rem 1.6rem;
+      text-align: center;
+      box-shadow: 0 4px 22px rgba(13,27,75,0.08);
+      border: 2px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .tim-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 44px rgba(13,27,75,0.16);
+      border-color: var(--gold);
+    }
+
+    .tim-card.featured {
+      width: 280px;
+      border-color: var(--gold);
+      box-shadow: 0 8px 40px rgba(201,162,39,0.20);
+    }
+
+    .tim-card.featured:hover {
+      box-shadow: 0 18px 56px rgba(201,162,39,0.30);
+    }
+
+    .tim-photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .tim-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3.5px solid var(--gold);
+      overflow: hidden;
+      background-size: cover;
+      background-position: center top;
+      flex-shrink: 0;
+    }
+
+    .tim-grid .tim-photo {
+      width: 90px;
+      height: 90px;
+      border-width: 2.5px;
+    }
+
+    .tim-photo-icon {
+      width: 48%;
+      height: 48%;
+      opacity: 0.55;
+      fill: white;
+    }
+
+    .tim-grid .tim-photo-icon {
+      width: 46%;
+      height: 46%;
+    }
+
+    .tim-role-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+
+    .tim-card.featured .tim-role-badge {
+      font-size: 0.75rem;
+      padding: 0.36rem 1.2rem;
+    }
+
+    .tim-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin-bottom: 0.28rem;
+      line-height: 1.25;
+    }
+
+    .tim-card.featured .tim-name {
+      font-size: 1.4rem;
+    }
+
+    .tim-faculty {
+      font-size: 0.76rem;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+      line-height: 1.45;
+    }
+
+    .tim-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
     /* ======= KONTAK ======= */
     .kontak { background: var(--bg-kontak); }
 
@@ -1329,6 +1452,7 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .misi-grid { grid-template-columns: repeat(2, 1fr); }
       .kkn-grid { grid-template-columns: repeat(2, 1fr); }
+      .tim-grid { grid-template-columns: repeat(3, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
       .kkn { background-attachment: scroll; }
     }
@@ -1396,6 +1520,8 @@
       .galeri-hdr { margin-bottom: 1.5rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
+      .tim-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .tim-card.featured { width: 240px; }
     }
 
     @media (max-width: 480px) {
@@ -1406,6 +1532,8 @@
       .kkn-grid  { grid-template-columns: 1fr; }
       .misi-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
+      .tim-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .tim-card.featured { width: 200px; }
     }
   </style>
 </head>
@@ -1428,6 +1556,7 @@
       <li><a href="#potensi">Potensi</a></li>
       <li><a href="#pemerintahan">Pemerintahan</a></li>
       <li><a href="#kkn">Program KKN</a></li>
+      <li><a href="#tim">Tim KKN</a></li>
       <li><a href="#kontak" class="nav-cta">Kontak</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
@@ -1829,6 +1958,130 @@
           <p class="kkn-desc">Pembinaan dan pengembangan bakat olahraga bagi pemuda desa, serta peningkatan kesadaran hidup sehat dan aktif bergerak.</p>
           <span class="kkn-badge">FKIP &middot; Pendidikan Olahraga</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIM KKN -->
+  <section class="tim section" id="tim">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto 3rem;">
+        <div class="tag" style="justify-content:center;">KKN Berdampak UNRI 2026</div>
+        <h2 class="section-title">Tim Kami<br><em>Desa Jangkang</em></h2>
+        <p class="section-desc" style="max-width:100%;">
+          Mahasiswa Universitas Riau yang bersatu, berdedikasi, dan siap
+          membangun Desa Jangkang melalui program-program nyata.
+        </p>
+      </div>
+
+      <!-- Ketua — Featured -->
+      <div class="tim-featured-wrap">
+        <div class="tim-card featured fade-up">
+          <div class="tim-photo-wrap">
+            <!--
+              CARA GANTI FOTO:
+              Hapus SVG di dalam .tim-photo, lalu tambahkan style berikut:
+              style="background-image: url('images/ketua.jpg'); background-size: cover; background-position: center top;"
+            -->
+            <div class="tim-photo">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">&#9733; Ketua</div>
+          <div class="tim-name">Nama Ketua</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+      </div>
+
+      <!-- Grid 6 Anggota -->
+      <div class="tim-grid">
+
+        <!-- Bendahara -->
+        <div class="tim-card fade-up">
+          <div class="tim-photo-wrap">
+            <div class="tim-photo" style="background: linear-gradient(135deg, #C9A227, #E4B830);">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">Bendahara</div>
+          <div class="tim-name">Nama Bendahara</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+
+        <!-- Sekretaris -->
+        <div class="tim-card fade-up">
+          <div class="tim-photo-wrap">
+            <div class="tim-photo" style="background: linear-gradient(135deg, #2347A0, #3D6DC5);">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">Sekretaris</div>
+          <div class="tim-name">Nama Sekretaris</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+
+        <!-- Acara -->
+        <div class="tim-card fade-up">
+          <div class="tim-photo-wrap">
+            <div class="tim-photo" style="background: linear-gradient(135deg, #1A5276, #2E86C1);">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">Acara</div>
+          <div class="tim-name">Nama Div. Acara</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+
+        <!-- Humas -->
+        <div class="tim-card fade-up">
+          <div class="tim-photo-wrap">
+            <div class="tim-photo" style="background: linear-gradient(135deg, #1E8449, #27AE60);">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">Humas</div>
+          <div class="tim-name">Nama Div. Humas</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+
+        <!-- Korlap -->
+        <div class="tim-card fade-up">
+          <div class="tim-photo-wrap">
+            <div class="tim-photo" style="background: linear-gradient(135deg, #6C3483, #9B59B6);">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">Korlap</div>
+          <div class="tim-name">Nama Korlap</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+
+        <!-- PDD -->
+        <div class="tim-card fade-up">
+          <div class="tim-photo-wrap">
+            <div class="tim-photo" style="background: linear-gradient(135deg, #A04000, #CA6F1E);">
+              <svg class="tim-photo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.97 0 5.25-2.28 5.25-5.25S14.97 1.5 12 1.5 6.75 3.78 6.75 6.75 9.03 12 12 12zm0 2.25c-3.51 0-10.5 1.755-10.5 5.25v2.25h21v-2.25c0-3.495-6.99-5.25-10.5-5.25z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="tim-role-badge">PDD</div>
+          <div class="tim-name">Nama Div. PDD</div>
+          <div class="tim-faculty">Fakultas / Jurusan</div>
+        </div>
+
       </div>
     </div>
   </section>

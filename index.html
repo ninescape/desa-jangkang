@@ -1130,12 +1130,12 @@
 
     .tim-card {
       background: var(--bg-white);
-      border-radius: 22px;
-      padding: 2rem 1.6rem;
+      border-radius: 18px;
       text-align: center;
       box-shadow: 0 4px 22px rgba(13,27,75,0.08);
       border: 2px solid var(--border);
       transition: all 0.3s;
+      overflow: hidden;
     }
 
     .tim-card:hover {
@@ -1145,7 +1145,7 @@
     }
 
     .tim-card.featured {
-      width: 280px;
+      width: 300px;
       border-color: var(--gold);
       box-shadow: 0 8px 40px rgba(201,162,39,0.20);
     }
@@ -1155,42 +1155,46 @@
     }
 
     .tim-photo-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.2rem;
+      width: 100%;
+      margin-bottom: 0;
     }
 
     .tim-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 100%;
+      height: 220px;
+      border-radius: 0;
       background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 3.5px solid var(--gold);
+      border: none;
       overflow: hidden;
       background-size: cover;
       background-position: center top;
       flex-shrink: 0;
     }
 
+    .tim-card.featured .tim-photo {
+      height: 280px;
+    }
+
     .tim-grid .tim-photo {
-      width: 90px;
-      height: 90px;
-      border-width: 2.5px;
+      height: 200px;
+    }
+
+    .tim-card-body {
+      padding: 1.2rem 1.2rem 1.5rem;
+    }
+
+    .tim-card.featured .tim-card-body {
+      padding: 1.4rem 1.6rem 1.8rem;
     }
 
     .tim-photo-icon {
-      width: 48%;
-      height: 48%;
-      opacity: 0.55;
+      width: 40px;
+      height: 40px;
+      opacity: 0.4;
       fill: white;
-    }
-
-    .tim-grid .tim-photo-icon {
-      width: 46%;
-      height: 46%;
     }
 
     .tim-role-badge {
@@ -1203,7 +1207,7 @@
       text-transform: uppercase;
       padding: 0.3rem 1rem;
       border-radius: 100px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .tim-card.featured .tim-role-badge {
@@ -1217,7 +1221,7 @@
       font-weight: 600;
       color: var(--navy-deep);
       margin-bottom: 0.28rem;
-      line-height: 1.25;
+      line-height: 1.3;
     }
 
     .tim-card.featured .tim-name {
@@ -1225,10 +1229,10 @@
     }
 
     .tim-faculty {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       color: var(--text-light);
       letter-spacing: 0.02em;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     .tim-grid {
@@ -1980,9 +1984,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/ketua-Bagas Pratama.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">&#9733; Ketua</div>
-          <div class="tim-name">Bagas Pratama</div>
-          <div class="tim-faculty">Ekonomi Pembangunan — FEB</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">&#9733; Ketua</div>
+            <div class="tim-name">Bagas Pratama</div>
+            <div class="tim-faculty">Ekonomi Pembangunan — FEB</div>
+          </div>
         </div>
       </div>
 
@@ -1994,9 +2000,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/bendahara-Desi Mutia Amanda.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">Bendahara</div>
-          <div class="tim-name">Desi Mutia Amanda</div>
-          <div class="tim-faculty">Ekonomi Pembangunan — FEB</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">Bendahara</div>
+            <div class="tim-name">Desi Mutia Amanda</div>
+            <div class="tim-faculty">Ekonomi Pembangunan — FEB</div>
+          </div>
         </div>
 
         <!-- Sekretaris -->
@@ -2004,9 +2012,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/sekretaris-Dian Wijayanti & Fanesya Atmaja.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">Sekretaris</div>
-          <div class="tim-name">Dian Wijayanti & Fanesya Atmaja</div>
-          <div class="tim-faculty">T. Hasil Perikanan, FAPERIKA & Pend. Bhs. Indonesia, FKIP</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">Sekretaris</div>
+            <div class="tim-name">Dian Wijayanti & Fanesya Atmaja</div>
+            <div class="tim-faculty">T. Hasil Perikanan, FAPERIKA & Pend. Bhs. Indonesia, FKIP</div>
+          </div>
         </div>
 
         <!-- Acara -->
@@ -2014,9 +2024,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/acara-Andika Fabian & Ayu Alifah.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">Acara</div>
-          <div class="tim-name">Andika Fabian & Ayu Alifah</div>
-          <div class="tim-faculty">T. Hasil Perikanan, FAPERIKA & PGPAUD, FKIP</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">Acara</div>
+            <div class="tim-name">Andika Fabian & Ayu Alifah</div>
+            <div class="tim-faculty">T. Hasil Perikanan, FAPERIKA & PGPAUD, FKIP</div>
+          </div>
         </div>
 
         <!-- Humas -->
@@ -2024,9 +2036,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/humas-Nizam Syahbana Usman.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">Humas</div>
-          <div class="tim-name">Nizam Syahbana Usman</div>
-          <div class="tim-faculty">Teknologi Hasil Perikanan — FAPERIKA</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">Humas</div>
+            <div class="tim-name">Nizam Syahbana Usman</div>
+            <div class="tim-faculty">Teknologi Hasil Perikanan — FAPERIKA</div>
+          </div>
         </div>
 
         <!-- Korlap -->
@@ -2034,9 +2048,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/korlap-M.Safri.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">Korlap</div>
-          <div class="tim-name">M. Safri</div>
-          <div class="tim-faculty">Teknologi Hasil Perikanan — FAPERIKA</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">Korlap</div>
+            <div class="tim-name">M. Safri</div>
+            <div class="tim-faculty">Teknologi Hasil Perikanan — FAPERIKA</div>
+          </div>
         </div>
 
         <!-- PDD -->
@@ -2044,9 +2060,11 @@
           <div class="tim-photo-wrap">
             <div class="tim-photo" style="background-image: url('images/pdd-Miftah Hasanah & Nabila Alfia Sari.jpeg'); background-size: cover; background-position: center top;"></div>
           </div>
-          <div class="tim-role-badge">PDD</div>
-          <div class="tim-name">Miftah Hasanah & Nabila Alfia Sari</div>
-          <div class="tim-faculty">Pendidikan Kimia, FKIP & Pend. Jasmani Kes. & Rekreasi, FKIP</div>
+          <div class="tim-card-body">
+            <div class="tim-role-badge">PDD</div>
+            <div class="tim-name">Miftah Hasanah & Nabila Alfia Sari</div>
+            <div class="tim-faculty">Pendidikan Kimia, FKIP & Pend. Jasmani Kes. & Rekreasi, FKIP</div>
+          </div>
         </div>
 
       </div>

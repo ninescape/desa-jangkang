@@ -1334,6 +1334,9 @@
       .kkn-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
       .kkn { background-attachment: scroll; }
+      /* Hilangkan efek stagger kartu hero agar rata di layar kecil */
+      .hero-card:nth-child(2) { margin-top: 0; }
+      .hero-card:nth-child(4) { margin-top: 0; }
     }
 
     @media (max-width: 768px) {

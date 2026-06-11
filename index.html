@@ -209,6 +209,258 @@
     [data-theme="dark"] .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.7); }
     [data-theme="dark"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
 
+    /* ======= SCROLL PROGRESS BAR ======= */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ======= BACK TO TOP ======= */
+    #back-to-top {
+      position: fixed;
+      bottom: 6rem; right: 2rem;
+      width: 46px; height: 46px;
+      background: var(--navy-deep);
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: all 0.3s ease;
+      z-index: 900;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #back-to-top:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    /* ======= WHATSAPP BUTTON ======= */
+    #wa-btn {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 52px; height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 900;
+      transition: all 0.3s ease;
+      animation: wa-pulse 2.5s ease-in-out infinite;
+    }
+
+    #wa-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.55);
+      animation: none;
+    }
+
+    #wa-btn svg { width: 28px; height: 28px; fill: white; }
+
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
+    }
+
+    /* ======= HAMBURGER MENU ======= */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      cursor: pointer;
+      padding: 5px;
+      background: none;
+      border: none;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,27,75,0.97);
+      backdrop-filter: blur(18px);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .mobile-menu a:hover { color: var(--gold-light); }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: white;
+      font-size: 1.3rem;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ======= LIGHTBOX ======= */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 12, 40, 0.95);
+      backdrop-filter: blur(16px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #lightbox.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lb-content {
+      position: relative;
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .lb-visual {
+      background: linear-gradient(135deg, rgba(26,50,114,0.9), rgba(13,27,75,0.95));
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      width: 100%;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lb-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .lb-caption {
+      margin-top: 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.04em;
+    }
+
+    .lb-counter {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.35rem;
+      letter-spacing: 0.08em;
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .lb-close:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
+
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px; height: 46px;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .lb-nav:hover { background: rgba(201,162,39,0.3); border-color: var(--gold); }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .lb-nav { display: none; }
+      .lb-visual { font-size: 5rem; }
+    }
+
+    /* ======= COUNTER ANIMATION ======= */
+    .stat-num, .hero-card-num {
+      transition: none;
+    }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -1517,8 +1769,10 @@
       }
 
       .kontak-grid { grid-template-columns: 1fr; }
-      .kontak-map  { height: 220px; }
+      .kontak-map  { height: 320px; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
       .galeri-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
       .gal-item:first-child { grid-column: span 2; min-height: 200px; }
       .galeri-hdr { margin-bottom: 1.5rem; }
@@ -1544,6 +1798,42 @@
 
 <body>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lb-close" aria-label="Tutup">✕</button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Sebelumnya">‹</button>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Berikutnya">›</button>
+    <div class="lb-content">
+      <div class="lb-visual" id="lb-visual"></div>
+      <div class="lb-caption" id="lb-caption"></div>
+      <div class="lb-counter" id="lb-counter"></div>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Tutup menu">✕</button>
+    <a href="#tentang" class="mob-link">Tentang</a>
+    <a href="#visimisi" class="mob-link">Visi &amp; Misi</a>
+    <a href="#potensi" class="mob-link">Potensi</a>
+    <a href="#pemerintahan" class="mob-link">Pemerintahan</a>
+    <a href="#kkn" class="mob-link">Program KKN</a>
+    <a href="#kontak" class="mob-link">Kontak</a>
+  </div>
+
+  <!-- FLOATING BUTTONS -->
+  <a id="wa-btn" href="https://wa.me/6208001234567" target="_blank" rel="noopener" aria-label="Hubungi via WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" aria-label="Kembali ke atas">↑</button>
+
   <!-- NAVBAR -->
   <nav id="nav">
     <a href="#beranda" class="nav-logo">
@@ -1566,6 +1856,9 @@
     <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
       <span class="theme-toggle-icon icon-sun">☀️</span>
       <span class="theme-toggle-icon icon-moon">🌙</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
@@ -1596,22 +1889,22 @@
       <div class="hero-cards">
         <div class="hero-card">
           <div class="hero-card-icon">&#128101;</div>
-          <div class="hero-card-num">2.377</div>
+          <div class="hero-card-num" data-count="2377">2.377</div>
           <div class="hero-card-lbl">Total Penduduk</div>
         </div>
         <div class="hero-card">
           <div class="hero-card-icon">&#127968;</div>
-          <div class="hero-card-num">670</div>
+          <div class="hero-card-num" data-count="670">670</div>
           <div class="hero-card-lbl">Kepala Keluarga</div>
         </div>
         <div class="hero-card">
           <div class="hero-card-icon">&#128104;</div>
-          <div class="hero-card-num">16</div>
+          <div class="hero-card-num" data-count="16">16</div>
           <div class="hero-card-lbl">RT</div>
         </div>
         <div class="hero-card">
           <div class="hero-card-icon">&#127981;</div>
-          <div class="hero-card-num">8</div>
+          <div class="hero-card-num" data-count="8">8</div>
           <div class="hero-card-lbl">RW</div>
         </div>
       </div>
@@ -1738,22 +2031,22 @@
       <div class="stats-grid">
         <div class="stat-card fade-up">
           <div class="stat-icon">&#128101;</div>
-          <div class="stat-num">2.377</div>
+          <div class="stat-num" data-count="2377">2.377</div>
           <div class="stat-lbl">Total Penduduk</div>
         </div>
         <div class="stat-card fade-up">
           <div class="stat-icon">&#127968;</div>
-          <div class="stat-num">670</div>
+          <div class="stat-num" data-count="670">670</div>
           <div class="stat-lbl">Kepala Keluarga</div>
         </div>
         <div class="stat-card fade-up">
           <div class="stat-icon">&#128104;</div>
-          <div class="stat-num">1.265</div>
+          <div class="stat-num" data-count="1265">1.265</div>
           <div class="stat-lbl">Penduduk Laki-laki</div>
         </div>
         <div class="stat-card fade-up">
           <div class="stat-icon">&#128105;</div>
-          <div class="stat-num">1.112</div>
+          <div class="stat-num" data-count="1112">1.112</div>
           <div class="stat-lbl">Penduduk Perempuan</div>
         </div>
       </div>
@@ -1890,23 +2183,23 @@
         <p class="section-desc" style="max-width:100%; margin:0.5rem auto 0;">Potret keindahan dan kehidupan Desa Jangkang dari berbagai momen.</p>
       </div>
       <div class="galeri-grid">
-        <div class="gal-item">
+        <div class="gal-item" data-emoji="🌊" data-caption="Pesisir Pantai Desa Jangkang">
           <div class="gal-inner">&#127754;</div>
           <div class="gal-caption">Pesisir Pantai Desa Jangkang</div>
         </div>
-        <div class="gal-item">
+        <div class="gal-item" data-emoji="🕌" data-caption="Masjid Desa">
           <div class="gal-inner">&#128332;</div>
           <div class="gal-caption">Masjid Desa</div>
         </div>
-        <div class="gal-item">
+        <div class="gal-item" data-emoji="🎭" data-caption="Festival Budaya Melayu">
           <div class="gal-inner">&#127917;</div>
           <div class="gal-caption">Festival Budaya Melayu</div>
         </div>
-        <div class="gal-item">
+        <div class="gal-item" data-emoji="🚤" data-caption="Nelayan Tradisional">
           <div class="gal-inner">&#128676;</div>
           <div class="gal-caption">Nelayan Tradisional</div>
         </div>
-        <div class="gal-item">
+        <div class="gal-item" data-emoji="🌴" data-caption="Perkebunan Kelapa">
           <div class="gal-inner">&#127796;</div>
           <div class="gal-caption">Perkebunan Kelapa</div>
         </div>
@@ -2011,17 +2304,17 @@
           </div>
         </div>
         <div>
-          <div class="kontak-map">
-            <div class="map-inner">
-              <div class="map-inner-icon">&#128506;</div>
-              <div class="map-inner-title">Peta Lokasi Desa Jangkang</div>
-              <div class="map-inner-sub">Kecamatan Bantan, Kabupaten Bengkalis, Riau</div>
-              <a href="https://maps.google.com/?q=Desa+Jangkang+Bantan+Bengkalis+Riau"
-                 target="_blank"
-                 class="map-btn">
-                &#128506; Buka di Google Maps
-              </a>
-            </div>
+          <div class="kontak-map" style="padding:0; overflow:hidden; border-radius:22px;">
+            <iframe
+              src="https://maps.google.com/maps?q=Desa+Jangkang+Bantan+Bengkalis+Riau&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="380"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Peta Lokasi Desa Jangkang">
+            </iframe>
           </div>
         </div>
       </div>
@@ -2088,22 +2381,70 @@
   </footer>
 
   <script>
-    /* ---- Navbar scroll ---- */
+    /* ============================================
+       1. SCROLL PROGRESS BAR
+    ============================================ */
+    const progressBar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    /* ============================================
+       2. NAVBAR SCROLL
+    ============================================ */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* ============================================
+       3. BACK TO TOP BUTTON
+    ============================================ */
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('show', window.scrollY > 400);
+    }, { passive: true });
+    btt.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /* ---- Intersection observer for fade-up ---- */
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('show');
+    /* ============================================
+       4. HAMBURGER MENU
+    ============================================ */
+    const hamburger    = document.getElementById('hamburger');
+    const mobileMenu   = document.getElementById('mobileMenu');
+    const mobileClose  = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      hamburger.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+    });
+    mobileClose.addEventListener('click', closeMobileMenu);
+
+    // Close when a link is tapped
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    });
 
-    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-    /* ---- Smooth scroll ---- */
+    /* ============================================
+       5. SMOOTH SCROLL
+    ============================================ */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
@@ -2114,11 +2455,144 @@
       });
     });
 
-    /* ---- Dark / Light Mode Toggle ---- */
-    const toggleBtn = document.getElementById('themeToggle');
-    const html = document.documentElement;
+    /* ============================================
+       6. FADE-UP INTERSECTION OBSERVER
+    ============================================ */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('show');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-    // Load saved preference
+    /* ============================================
+       7. ANIMATED COUNTER
+    ============================================ */
+    function formatNum(n) {
+      // Format pakai titik ribuan (format Indonesia: 2.377)
+      return n.toLocaleString('id-ID');
+    }
+
+    function animateCounter(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+      const target = parseInt(el.dataset.count, 10);
+      const duration = 1800;
+      const start = performance.now();
+      const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = Math.round(easeOut(progress) * target);
+        el.textContent = formatNum(current);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = formatNum(target);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const countEl = e.target.querySelector('[data-count]');
+          if (countEl) animateCounter(countEl);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    // Observe stat cards and hero cards
+    document.querySelectorAll('.stat-card, .hero-card').forEach(card => {
+      counterObserver.observe(card);
+    });
+
+    /* ============================================
+       8. LIGHTBOX
+    ============================================ */
+    const lightbox  = document.getElementById('lightbox');
+    const lbVisual  = document.getElementById('lb-visual');
+    const lbCaption = document.getElementById('lb-caption');
+    const lbCounter = document.getElementById('lb-counter');
+    const lbClose   = document.getElementById('lb-close');
+    const lbPrev    = document.getElementById('lb-prev');
+    const lbNext    = document.getElementById('lb-next');
+
+    const galItems  = Array.from(document.querySelectorAll('.gal-item'));
+    let currentIdx  = 0;
+
+    function showLbItem(idx) {
+      const item = galItems[idx];
+      const emoji   = item.dataset.emoji   || '🖼️';
+      const caption = item.dataset.caption || '';
+      const imgSrc  = item.dataset.img     || '';
+
+      if (imgSrc) {
+        lbVisual.innerHTML = `<img src="${imgSrc}" alt="${caption}">`;
+      } else {
+        lbVisual.innerHTML = `<span style="font-size:8rem;">${emoji}</span>`;
+      }
+      lbCaption.textContent = caption;
+      lbCounter.textContent = `${idx + 1} / ${galItems.length}`;
+      currentIdx = idx;
+    }
+
+    function openLightbox(idx) {
+      showLbItem(idx);
+      lightbox.style.display = 'flex';
+      requestAnimationFrame(() => lightbox.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      setTimeout(() => {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    galItems.forEach((item, idx) => {
+      item.style.cursor = 'zoom-in';
+      item.addEventListener('click', () => openLightbox(idx));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    lbPrev.addEventListener('click', () => {
+      const prev = (currentIdx - 1 + galItems.length) % galItems.length;
+      showLbItem(prev);
+    });
+
+    lbNext.addEventListener('click', () => {
+      const next = (currentIdx + 1) % galItems.length;
+      showLbItem(next);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')       closeLightbox();
+      if (e.key === 'ArrowLeft')    { const p = (currentIdx - 1 + galItems.length) % galItems.length; showLbItem(p); }
+      if (e.key === 'ArrowRight')   { const n = (currentIdx + 1) % galItems.length; showLbItem(n); }
+    });
+
+    // Touch swipe for lightbox
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', e => {
+      const delta = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) > 50) {
+        if (delta < 0) { const n = (currentIdx + 1) % galItems.length; showLbItem(n); }
+        else           { const p = (currentIdx - 1 + galItems.length) % galItems.length; showLbItem(p); }
+      }
+    }, { passive: true });
+
+    /* ============================================
+       9. DARK / LIGHT MODE TOGGLE
+    ============================================ */
+    const toggleBtn = document.getElementById('themeToggle');
+    const html      = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', savedTheme);
 

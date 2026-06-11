@@ -7,7 +7,7 @@ html
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desa Jangkang — Kecamatan Bantan, Bengkalis</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1689,7 +1689,7 @@ html
                 Buka Google Maps
               </a>
             </div>
-            <!-- Leaflet map canvas -->
+            <!-- Peta Satelit Leaflet -->
             <div id="leaflet-map"></div>
             <!-- Satellite badge -->
             <div class="map-sat-badge">
@@ -1978,74 +1978,72 @@ html
     });
   </script>
 
-  <!-- LEAFLET JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/sp8="
-          crossorigin=""></script>
+  <!-- LEAFLET JS — tanpa SRI agar tidak gagal dimuat -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
   <script>
     /* ============================================
-       LEAFLET MAP — Kantor Desa Jangkang (Satelit)
+       PETA SATELIT — Kantor Desa Jangkang
        Koordinat: 1.4058°LU, 102.0763°BT
-       Alamat: Jl. Utama Jangkang, Kec. Bantan, Bengkalis
+       Tile: Esri World Imagery (Satelit) + Label
     ============================================ */
     (function initMap() {
-      // ── Koordinat Kantor Desa Jangkang ──────────
       const LAT = 1.4058, LNG = 102.0763;
       const GMAPS_URL = `https://www.google.com/maps?q=${LAT},${LNG}&z=18`;
 
       const map = L.map('leaflet-map', {
         center: [LAT, LNG],
-        zoom: 18,                 // zoom lebih dekat untuk tampilan satelit
+        zoom: 17,
         zoomControl: false,
         scrollWheelZoom: false,
         attributionControl: false
       });
 
       L.control.zoom({ position: 'bottomright' }).addTo(map);
-
       L.control.attribution({ position: 'bottomleft', prefix: false })
         .addAttribution('© <a href="https://www.esri.com/" target="_blank">Esri</a> &amp; contributors')
         .addTo(map);
 
-      // ── Tile Layer Satelit (Esri World Imagery) ──
-      // Dipakai untuk SEMUA mode (light & dark) — tampilan satelit tidak berubah.
-      // Tambahkan label jalan dari Esri sebagai overlay agar nama jalan tetap terbaca.
+      /* ── Tile Satelit Utama: Esri World Imagery ── */
       const tileSatellite = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        {
-          maxZoom: 20,
-          attribution: '© Esri, Maxar, GeoEye, Earthstar Geographics'
-        }
+        { maxZoom: 20, attribution: '© Esri, Maxar, Earthstar Geographics' }
       );
 
-      // Label overlay (nama jalan, batas wilayah) di atas citra satelit
+      /* ── Tile Label: nama jalan & tempat ── */
       const tileLabels = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
-        {
-          maxZoom: 20,
-          opacity: 0.85,
-          pane: 'overlayPane'
-        }
+        { maxZoom: 20, opacity: 0.9, pane: 'overlayPane' }
       );
 
       tileSatellite.addTo(map);
       tileLabels.addTo(map);
 
-      // ── Custom Marker Icon ──────────────────────
+      /* ── Fallback: jika Esri gagal, tampilkan OSM ── */
+      let esriLoaded = false;
+      tileSatellite.on('tileload', function () { esriLoaded = true; });
+      tileSatellite.on('tileerror', function () {
+        if (!esriLoaded) {
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+          }).addTo(map);
+        }
+      });
+
+      /* ── Custom Marker Icon ── */
       const markerSvg = `
         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="56" viewBox="0 0 46 56">
           <defs>
             <filter id="drop" x="-30%" y="-10%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.5"/>
+              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
             </filter>
           </defs>
-          <path d="M23 2C14.16 2 7 9.16 7 18C7 29.75 23 54 23 54C23 54 39 29.75 39 18C39 9.16 31.84 2 23 2Z"
+          <path d="M23 2C14.16 2 7 9.16 7 18C7 29.75 23 54 23 54s16-24.25 16-36C39 9.16 31.84 2 23 2Z"
                 fill="#C9A227" filter="url(#drop)"/>
           <circle cx="23" cy="18" r="11" fill="none" stroke="white" stroke-width="2.5"/>
           <path d="M23 10.5L15.5 17H17.5V24.5H20.5V20H25.5V24.5H28.5V17H30.5L23 10.5Z"
                 fill="white" opacity="0.95"/>
-          <circle cx="23" cy="54" r="2" fill="#C9A227" opacity="0.8"/>
         </svg>`;
 
       const markerIcon = L.divIcon({
@@ -2056,14 +2054,11 @@ html
         popupAnchor:[0, -58]
       });
 
-      // ── Marker + Popup ──────────────────────────
+      /* ── Marker + Popup ── */
       const popupContent = `
         <div class="popup-inner">
           <div class="popup-title">🏡 Kantor Desa Jangkang</div>
-          <div class="popup-sub">
-            Jl. Utama Jangkang<br>
-            Kec. Bantan, Kab. Bengkalis, Riau 28754
-          </div>
+          <div class="popup-sub">Jl. Utama Jangkang<br>Kec. Bantan, Kab. Bengkalis, Riau 28754</div>
           <a class="popup-link" href="${GMAPS_URL}" target="_blank" rel="noopener">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -2074,37 +2069,24 @@ html
 
       const marker = L.marker([LAT, LNG], { icon: markerIcon })
         .addTo(map)
-        .bindPopup(popupContent, {
-          className:  'custom-popup',
-          maxWidth:   240,
-          closeButton: false
-        });
+        .bindPopup(popupContent, { className: 'custom-popup', maxWidth: 240, closeButton: false });
 
       setTimeout(() => marker.openPopup(), 600);
 
-      // Klik di mana saja pada peta → buka Google Maps
-      map.on('click', () => {
-        window.open(GMAPS_URL, '_blank', 'noopener');
-      });
-
+      map.on('click', () => window.open(GMAPS_URL, '_blank', 'noopener'));
       document.getElementById('leaflet-map').style.cursor = 'pointer';
 
-      map.on('focus', () => map.scrollWheelZoom.enable());
-      map.on('blur',  () => map.scrollWheelZoom.disable());
-
-      // ── Pulsing circle ──────────────────────────
+      /* ── Pulsing ring ── */
       const pulseIcon = L.divIcon({
         html: `<div style="
-          width:70px; height:70px; border-radius:50%;
-          background: radial-gradient(circle, rgba(201,162,39,0.45) 0%, transparent 70%);
-          animation: map-pulse 2.2s ease-in-out infinite;
-          margin-left:-35px; margin-top:-35px;
-        "></div>`,
+          width:70px;height:70px;border-radius:50%;
+          background:radial-gradient(circle,rgba(201,162,39,0.45) 0%,transparent 70%);
+          animation:map-pulse 2.2s ease-in-out infinite;
+          margin-left:-35px;margin-top:-35px;"></div>`,
         className: '',
         iconSize:   [1, 1],
         iconAnchor: [0, 0]
       });
-
       L.marker([LAT, LNG], { icon: pulseIcon, interactive: false, zIndexOffset: -10 }).addTo(map);
     })();
   </script>

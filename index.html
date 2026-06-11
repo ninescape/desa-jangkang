@@ -941,31 +941,6 @@
 
     #leaflet-map { width: 100%; height: 400px; z-index: 1; }
 
-    /* Satellite label overlay badge */
-    .map-sat-badge {
-      position: absolute;
-      bottom: 0.8rem; left: 0.8rem;
-      z-index: 800;
-      background: rgba(13,27,75,0.82);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(201,162,39,0.4);
-      border-radius: 100px;
-      padding: 0.32rem 0.85rem;
-      display: flex; align-items: center; gap: 0.45rem;
-      pointer-events: none;
-    }
-
-    .map-sat-dot {
-      width: 7px; height: 7px;
-      background: var(--gold-light); border-radius: 50%;
-    }
-
-    .map-sat-text {
-      font-size: 0.68rem; font-weight: 600;
-      color: var(--gold-light); letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
     /* Override Leaflet default controls */
     .leaflet-control-zoom a {
       font-family: 'Outfit', sans-serif !important;
@@ -1689,11 +1664,7 @@
             </div>
             <!-- Peta Satelit Leaflet -->
             <div id="leaflet-map"></div>
-            <!-- Satellite badge -->
-            <div class="map-sat-badge">
-              <div class="map-sat-dot"></div>
-              <span class="map-sat-text">Citra Satelit</span>
-            </div>
+
           </div>
         </div>
       </div>

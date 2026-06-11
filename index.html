@@ -997,25 +997,50 @@
     /* Leaflet custom popup */
     .custom-popup .leaflet-popup-content-wrapper {
       background: var(--navy-deep) !important;
-      border: 1px solid rgba(201,162,39,0.4) !important;
+      border: 1px solid rgba(201,162,39,0.35) !important;
       border-radius: 16px !important;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.35) !important;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.40) !important;
       padding: 0 !important;
     }
 
     .custom-popup .leaflet-popup-content { margin: 0 !important; width: auto !important; }
+    .custom-popup .leaflet-popup-tip-container { margin-top: -1px; }
     .custom-popup .leaflet-popup-tip { background: var(--navy-deep) !important; }
 
-    .popup-inner { padding: 1rem 1.3rem 1.1rem; min-width: 180px; }
+    .popup-inner { padding: 0.9rem 1.1rem 1rem; min-width: 210px; }
 
-    .popup-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.25rem; }
-    .popup-sub { font-size: 0.74rem; color: rgba(255,255,255,0.6); line-height: 1.5; margin-bottom: 0.8rem; }
+    /* Row: ikon + nama + subtitle */
+    .popup-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .popup-icon-wrap {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(201,162,39,0.15);
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .popup-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.86rem; font-weight: 600;
+      color: #ffffff; line-height: 1.3; margin-bottom: 0.15rem;
+    }
+
+    .popup-sub {
+      font-size: 0.7rem; color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
 
     .popup-link {
-      display: inline-flex; align-items: center; gap: 0.35rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
       background: var(--gold); color: white; text-decoration: none;
-      font-size: 0.72rem; font-weight: 700; padding: 0.35rem 0.85rem;
-      border-radius: 100px; transition: background 0.2s;
+      font-size: 0.73rem; font-weight: 700; letter-spacing: 0.02em;
+      padding: 0.48rem 1rem; border-radius: 8px;
+      transition: background 0.2s; width: 100%;
     }
 
     .popup-link:hover { background: var(--earth); }
@@ -2026,10 +2051,15 @@
       /* ── Marker + Popup ── */
       const popupContent = `
         <div class="popup-inner">
-          <div class="popup-title">📍 Kantor Desa Jangkang</div>
-          <div class="popup-sub">Jl. Utama Jangkang<br>Kec. Bantan, Kab. Bengkalis, Riau 28754</div>
+          <div class="popup-row">
+            <div class="popup-icon-wrap">🏡</div>
+            <div>
+              <div class="popup-title">Kantor Desa Jangkang</div>
+              <div class="popup-sub">Kec. Bantan &middot; Kab. Bengkalis</div>
+            </div>
+          </div>
           <a class="popup-link" href="${GMAPS_URL}" target="_blank" rel="noopener">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
             Buka di Google Maps
@@ -2038,7 +2068,12 @@
 
       const marker = L.marker([LAT, LNG], { icon: markerIcon })
         .addTo(map)
-        .bindPopup(popupContent, { className: 'custom-popup', maxWidth: 260, closeButton: false })
+        .bindPopup(popupContent, {
+          className: 'custom-popup',
+          maxWidth: 240,
+          closeButton: false,
+          autoPanPaddingTopLeft: L.point(0, 75)   /* beri ruang 75px dari atas agar tidak tertutup brand strip */
+        })
         .bindTooltip('Klik untuk detail lokasi', {
           direction: 'bottom',
           offset: [0, 10],
